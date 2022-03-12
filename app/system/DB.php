@@ -32,8 +32,8 @@ class DB
             try {
                 self::$connection = new PDO("mysql:host=" . $db_info['db_host'] . ';dbname=' . $db_info['db_name'], $db_info['db_username'], $db_info['db_password']);
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                self::$connection->query('SET NAMES utf8mb4');
-                self::$connection->query('SET CHARACTER SET utf8mb4');
+                self::$connection->exec('SET NAMES utf8mb4');
+                self::$connection->exec('SET CHARACTER SET utf8mb4');
                 self::setCharsetEncoding();
             } catch (PDOException $e) {
                 echo $e->getMessage();
