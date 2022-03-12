@@ -33,11 +33,11 @@ class Base
 
     protected function updateSession(): void
     {
-        if ((isset($_GET['set_id']) && isset($_SESSION['set_id'])) && $_GET['set_id'] !== $_SESSION['set_id']) { // GET und SESSION sind verschiedene Bereiche und werden nur dadruch verglichen, dass wir set_id nutzen
+        if (isset($_GET['set_id'], $_SESSION['set_id']) && $_GET['set_id'] !== $_SESSION['set_id']) { // GET und SESSION sind verschiedene Bereiche und werden nur dadruch verglichen, dass wir set_id nutzen
             unset($_SESSION['set_id'], $_SESSION['topic_id'], $_SESSION['question_id']);
         }
 
-        if ((isset($_GET['topic_id']) && isset($_SESSION['topic_id'])) && $_GET['topic_id'] !== $_SESSION['topic_id']) {
+        if (isset($_GET['topic_id'], $_SESSION['topic_id']) && $_GET['topic_id'] !== $_SESSION['topic_id']) {
             unset($_SESSION['topic_id'], $_SESSION['question_id']);
         }
 
