@@ -7,4 +7,3 @@ use app\controller\SetController;
 $setController = new SetController();
 
 print $setController->outputJSON();
-// statt session -> get

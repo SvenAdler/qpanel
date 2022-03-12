@@ -6,4 +6,7 @@ use app\controller\TopicController;
 
 $topicController = new TopicController();
 $topic = $topicController->getTopicTitlesBySetID($_GET["set_id"]);
-print json_encode($topic, JSON_HEX_APOS);
+try {
+    print json_encode($topic, JSON_THROW_ON_ERROR | JSON_HEX_APOS);
+} catch (JsonException) {
+}

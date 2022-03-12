@@ -6,4 +6,7 @@ use app\controller\SetController;
 //Get all Set Titles for the selected element in the edit topic modal
 $setController = new SetController();
 $sets = $setController->getAllTitles();
-print json_encode($sets, JSON_HEX_APOS);
+try {
+    print json_encode($sets, JSON_THROW_ON_ERROR | JSON_HEX_APOS);
+} catch (JsonException) {
+}
