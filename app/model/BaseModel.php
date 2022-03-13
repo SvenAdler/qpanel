@@ -17,12 +17,12 @@ class BaseModel
     public function bind($query_template, ...$args): bool|\PDOStatement
     {
         $stm = $this->db->prepare($query_template);
-        for ($i = 0; $i < count($args); ++$i) {
-            if (gettype($args[$i]) === "integer") {
+        for ($i = 0, $iMax = count($args); $i < $iMax; ++$i) {
+            if (is_int($args[$i])) {
                 $stm->bindParam($i + 1, $args[$i], PDO::PARAM_INT);
-            } elseif (gettype($args[$i]) === "string") {
+            } elseif (is_string($args[$i])) {
                 $stm->bindParam($i + 1, $args[$i], PDO::PARAM_STR);
-            } elseif (gettype($args[$i]) === "NULL") {
+            } elseif (is_null($args[$i])) {
                 $stm->bindParam($i + 1, $args[$i], PDO::PARAM_NULL);
             }
         }
