@@ -30,7 +30,7 @@ class QuestionController extends Base
         return ($this->model->getTitlesBy($id));
     }
 
-    public function addQuestion()
+    public function addQuestion(): void
     {
         if (((isset($_POST['question_rel_topic']) && isset($_POST['question_ordering']) && isset($_POST['question_type']) &&
                     isset($_POST['question_text']) && (isset($_POST['goto_default']))) || !isset($_POST['goto_default'])) &&
@@ -64,7 +64,7 @@ class QuestionController extends Base
         $this->model->remove($rm_id);
     }
 
-    public function editQuestion()
+    public function editQuestion(): void
     {
         if ((isset($_POST['ed_question_id']) && isset($_POST['ed_question_reltopic']) && isset($_POST['ed_question_ordering']) && isset($_POST['ed_question_type']) &&
                 isset($_POST['ed_question_text']) && isset($_POST['ed_goto_default'])) &&
