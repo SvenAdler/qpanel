@@ -32,8 +32,8 @@ class QuestionController extends Base
 
     public function addQuestion(): void
     {
-        if (((isset($_POST['question_rel_topic']) && isset($_POST['question_ordering']) && isset($_POST['question_type']) &&
-                    isset($_POST['question_text']) && (isset($_POST['goto_default']))) || !isset($_POST['goto_default'])) &&
+        if (((isset($_POST['question_rel_topic'], $_POST['question_ordering'], $_POST['question_type'], $_POST['question_text'],
+                    $_POST['goto_default'])) || !isset($_POST['goto_default'])) &&
             (!empty($_POST['question_rel_topic']) && !empty($_POST['question_ordering']) && !empty($_POST['question_type']) &&
                 !empty($_POST['question_text']))) {
             $relatedTopic = (int)$_POST['question_rel_topic'];
@@ -66,10 +66,8 @@ class QuestionController extends Base
 
     public function editQuestion(): void
     {
-        if ((isset($_POST['ed_question_id']) && isset($_POST['ed_question_reltopic']) && isset($_POST['ed_question_ordering']) && isset($_POST['ed_question_type']) &&
-                isset($_POST['ed_question_text']) && isset($_POST['ed_goto_default'])) &&
-            (!empty($_POST['ed_question_id']) && !empty($_POST['ed_question_reltopic']) && !empty($_POST['ed_question_ordering']) && !empty($_POST['ed_question_type']) &&
-                !empty($_POST['ed_question_text']))) {
+        if (isset($_POST['ed_question_id'], $_POST['ed_question_reltopic'], $_POST['ed_question_ordering'], $_POST['ed_question_type'], $_POST['ed_question_text'], $_POST['ed_goto_default'])
+            && !empty($_POST['ed_question_id']) && !empty($_POST['ed_question_reltopic']) && !empty($_POST['ed_question_ordering']) && !empty($_POST['ed_question_type']) && !empty($_POST['ed_question_text'])) {
             if (empty($_POST['goto_default'])) {
                 $gotoDefault = null;
             } else {
