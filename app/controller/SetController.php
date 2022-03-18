@@ -4,6 +4,7 @@ namespace app\controller;
 
 use app\model\SetModel;
 use app\system\Base;
+use JsonException;
 
 class SetController extends Base
 {
@@ -71,12 +72,15 @@ class SetController extends Base
         }
     }
 
+    /**
+     * @throws JsonException
+     */
     public function outputJSON()
     {
         $id = isset($_GET['set_id']) ? (int)$_GET['set_id'] : null;
         if (is_null($id)) {
             return null;
         }
-        return json_encode($this->model->getOutputData($id), JSON_HEX_APOS);
+        return json_encode($this->model->getOutputData($id), JSON_THROW_ON_ERROR | JSON_HEX_APOS);
     }
 }
