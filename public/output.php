@@ -6,4 +6,7 @@ use app\controller\SetController;
 
 $setController = new SetController();
 
-print $setController->outputJSON();
+try {
+    print $setController->outputJSON();
+} catch (JsonException) {
+}
