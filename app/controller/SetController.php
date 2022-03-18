@@ -32,8 +32,8 @@ class SetController extends Base
 
     public function addSet()
     {
-        if ((isset($_POST['set_ordering']) && isset($_POST['set_title'])) &&
-            (!empty($_POST['set_ordering']) && !empty($_POST['set_title']))) {
+        if (isset($_POST['set_ordering'], $_POST['set_title']) &&
+            !empty($_POST['set_ordering']) && !empty($_POST['set_title'])) {
             $ordering = (int)$_POST['set_ordering'];
             $title = $_POST['set_title'];
             $set_id = $this->model->add($ordering, $title);
@@ -65,8 +65,8 @@ class SetController extends Base
 
     public function editSet()
     {
-        if ((isset($_POST['ed_id']) && isset($_POST['ed_ordering']) && isset($_POST['ed_title'])) &&
-            (!empty($_POST['ed_id']) && !empty($_POST['ed_ordering']) && !empty($_POST['ed_title']))) {
+        if (isset($_POST['ed_id'], $_POST['ed_ordering'], $_POST['ed_title']) &&
+            !empty($_POST['ed_id']) && !empty($_POST['ed_ordering']) && !empty($_POST['ed_title'])) {
             $this->model->edit((int)$_POST['ed_id'], (int)$_POST['ed_ordering'], $_POST['ed_title']);
         }
     }
